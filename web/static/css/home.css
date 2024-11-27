@@ -1,0 +1,19 @@
+
+.carousel-caption h5 {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #fff;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+}
+
+.carousel-caption p {
+    font-size: 1.2rem;
+    color: #ddd;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7);
+}
+.carousel-item img{
+    height: 70vh;
+}
+.Hero-Cover{
+    
+}

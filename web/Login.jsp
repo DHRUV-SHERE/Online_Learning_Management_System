@@ -21,18 +21,22 @@
             String email = request.getParameter("email");
             String password = request.getParameter("password");
             boolean loginSuccess = false;
+            String firstName = null;
+            String lastName = null;
 
             if (email != null && password != null) {
                 try {
                     Connection conn = DriverManager.getConnection("jdbc:derby://localhost:1527/Record_021", "root", "root");
 
-                    PreparedStatement ps = conn.prepareStatement("SELECT * FROM user_detail WHERE email=? AND password=?");
+                    PreparedStatement ps = conn.prepareStatement("SELECT first_name, last_name FROM user_detail WHERE email=? AND password=?");
                     ps.setString(1, email);
                     ps.setString(2, password);
                     ResultSet rs = ps.executeQuery();
 
                     if (rs.next()) {
                         loginSuccess = true;
+                        firstName = rs.getString("first_name");
+                        lastName = rs.getString("last_name");
                     }
 
                     rs.close();
@@ -44,8 +48,12 @@
             }
 
             if (loginSuccess) {
+                // Store user details in session
+                session.setAttribute("email", email);
+                session.setAttribute("firstName", firstName);
+                session.setAttribute("lastName", lastName);
                 response.sendRedirect("home.jsp");
-            } else if (email != null && password != null) { %>
+           } else if (email != null && password != null) { %>
         <script>
             alert('Invalid email or password. Please try again.');
         </script>

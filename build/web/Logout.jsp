@@ -1,6 +1,6 @@
 <%-- 
-    Document   : index
-    Created on : Nov 15, 2024, 11:22:59 AM
+    Document   : logout
+    Created on : Nov 19, 2024, 9:11:25 AM
     Author     : SHERE
 --%>
 
@@ -9,9 +9,14 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Login</title>
+        <title>JSP Page</title>
     </head>
     <body>
-        <% response.sendRedirect("home.jsp"); %>
+        <%@page session="true" %>
+        <%
+            session.invalidate();
+            response.sendRedirect("home.jsp");
+        %>
+
     </body>
 </html>

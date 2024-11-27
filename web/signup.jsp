@@ -42,6 +42,7 @@
 
           if (result > 0) {
               // Registration successful
+              session.setAttribute("email", regEmail);
               response.sendRedirect("Login.jsp"); // Ensure Login.jsp is accessible
               return; // Stop further execution
           } else {
